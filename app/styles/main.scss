@@ -21,11 +21,9 @@ body {
 body {
   background: #fafafa;
   font-family: sans-serif;
-  @media(min-width: 1000px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
@@ -34,28 +32,9 @@ body {
   padding-left: 10vw;
   padding-right: 10vw;
   margin: 10vw auto;
-  @media(min-width: 1000px) {
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 13.37vh;
-    flex: 1;
-    flex-basis: 100%;
-    position: relative;
-    margin: auto;
-    &:before {
-      content: '';
-      overflow: hidden;
-      position: absolute;
-      width: 9000px;
-      height: 9000px;
-      background-color: #e8e8e8;
-      display: block;
-      top: 0;
-      left: -633px;
-      z-index: -1;
-      transform: translate(-100%, -50%) rotate(-60deg);
-    }
-  }
+  padding-bottom: 13.37vh;
+  flex: 1;
+  flex-basis: 100%;
 }
 
 #logo {
@@ -71,6 +50,19 @@ body {
   }
   @media(min-width: 1000px) {
     max-width: 50%;
+  }
+  &:before {
+    content: '';
+    overflow: hidden;
+    position: absolute;
+    width: 9000px;
+    height: 9000px;
+    background-color: #e8e8e8;
+    display: block;
+    top: 36%;
+    left: -696px;
+    z-index: -1;
+    transform: translate(-100%, -50%) rotate(-60deg);
   }
 }
 
@@ -93,6 +85,46 @@ body {
       path {
         fill: #6b6e78;
       }
+    }
+  }
+}
+
+[data-tooltip] {
+  position: relative;
+  $strokewidth: 42px;
+  &:before {
+    content: '';
+    display: block;
+    height: 2px;
+    width: $strokewidth;
+    background-color: #3ea468;
+    transform: rotate(120deg) scaleX(0) translateX(75%);
+    position: absolute;
+    top: 50%;
+    left: calc(50% - #{$strokewidth/2});
+    transition: transform .337s ease-in-out;
+  }
+  &:after {
+    content: attr(data-tooltip);
+    display: inline-block;
+    position: absolute;
+    left: -#{$strokewidth/7.331};
+    top: calc(100% + #{$strokewidth/4});
+    font-family: monospace;
+    line-height: 16px;
+    font-size: 12px;
+    color: #2b2e38;
+    opacity: 0;
+    transform: translateX(-33.7%);
+    transition: transform .337s ease-in-out, opacity .337s ease-in-out;
+  }
+  &:hover {
+    &:before {
+      transform: rotate(120deg) scaleX(1) translateX(0);
+    }
+    &:after {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }
