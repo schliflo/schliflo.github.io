@@ -5,7 +5,11 @@ cd .tmp
 git clone git@github.com:schliflo/schliflo.github.io.git
 cd schliflo.github.io
 git checkout master
+rm -rf *
+touch CNAME
+echo 'schliflo.de' > CNAME
 cp -r ../../dist/* .
-git commit -am "update site"
+git add -A
+git commit -m "update site"
 git push
-git checkout src
+cd ../../
