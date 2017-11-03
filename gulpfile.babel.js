@@ -86,6 +86,7 @@ gulp.task('generate-favicon', function (done) {
 gulp.task('inject-favicon-markups', function () {
     return gulp.src(['dist/index.html'])
         .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))
+        .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
         .pipe(gulp.dest('dist'));
 });
 
