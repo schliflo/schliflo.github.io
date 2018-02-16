@@ -1,5 +1,6 @@
 {
     "name": "schliflo.de",
+    "short_name": "schliflo.de",
     "icons": [
         {
             "src": "img/favicons/android-chrome-192x192.png",
